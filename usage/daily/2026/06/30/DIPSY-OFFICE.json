@@ -3,22 +3,21 @@
   "source": "cc-switch.db",
   "app_type": "codex",
   "machine_id": "DIPSY-OFFICE",
-  "generated_at": "2026-06-30T17:41:37+08:00",
+  "generated_at": "2026-06-30T17:52:05+08:00",
   "period": {
     "type": "daily",
     "start": "2026-06-30",
     "end": "2026-07-01"
   },
   "totals": {
-    "requests": 773,
-    "session_count": 8,
-    "input_tokens_including_cache": 96512685,
-    "fresh_input_tokens": 6664493,
-    "output_tokens": 419131,
-    "cache_read_tokens": 89848192,
+    "requests": 793,
+    "input_tokens_including_cache": 98580171,
+    "fresh_input_tokens": 6681931,
+    "output_tokens": 423814,
+    "cache_read_tokens": 91898240,
     "cache_creation_tokens": 0,
-    "real_total_tokens": 96931816,
-    "cache_hit_rate": 0.930947,
-    "cost_usd": 90.820491
+    "real_total_tokens": 99003985,
+    "cache_hit_rate": 0.932218,
+    "cost_usd": 92.073195
   }
 }
