@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 USAGE_DIR = ROOT / "usage"
 REPORTS_DIR = ROOT / "reports"
+PRO_MONTHLY_USD = 200
 
 
 def load_json(path):
@@ -69,6 +70,10 @@ def fmt_cost(value):
     return f"${value:.6f}"
 
 
+def fmt_roi(cost):
+    return f"{cost / PRO_MONTHLY_USD:.2f}x"
+
+
 def title_for(kind, key):
     if kind == "daily":
         return f"Codex 用量日报 - {key}"
@@ -96,8 +101,8 @@ def render_report(kind, key, rows):
         "",
         "## 汇总",
         "",
-        "| 请求数 | 会话数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 |",
-        "|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| 请求数 | 会话数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 | 回本倍率 |",
+        "|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
         "| "
         + " | ".join(
             [
@@ -109,14 +114,15 @@ def render_report(kind, key, rows):
                 fmt_int(total["cache_read_tokens"]),
                 fmt_rate(total["cache_hit_rate"]),
                 fmt_cost(total["cost_usd"]),
+                fmt_roi(total["cost_usd"]),
             ]
         )
         + " |",
         "",
         "## 按机器明细",
         "",
-        "| 机器 | 请求数 | 会话数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 | 更新时间 |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| 机器 | 请求数 | 会话数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 | 回本倍率 | 更新时间 |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
 
     for row in rows:
@@ -134,6 +140,7 @@ def render_report(kind, key, rows):
                     fmt_int(totals.get("cache_read_tokens", 0)),
                     fmt_rate(totals.get("cache_hit_rate", 0)),
                     fmt_cost(totals.get("cost_usd", 0)),
+                    fmt_roi(totals.get("cost_usd", 0)),
                     row.get("generated_at", ""),
                 ]
             )
