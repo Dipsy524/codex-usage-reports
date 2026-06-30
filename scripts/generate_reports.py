@@ -40,6 +40,7 @@ def collect(kind):
 def add_totals(rows):
     total = {
         "requests": 0,
+        "session_count": 0,
         "fresh_input_tokens": 0,
         "output_tokens": 0,
         "cache_read_tokens": 0,
@@ -95,12 +96,13 @@ def render_report(kind, key, rows):
         "",
         "## 汇总",
         "",
-        "| 请求数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 |",
-        "|---:|---:|---:|---:|---:|---:|---:|",
+        "| 请求数 | 会话数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 |",
+        "|---:|---:|---:|---:|---:|---:|---:|---:|",
         "| "
         + " | ".join(
             [
                 fmt_int(total["requests"]),
+                fmt_int(total["session_count"]),
                 fmt_int(total["real_total_tokens"]),
                 fmt_int(total["fresh_input_tokens"]),
                 fmt_int(total["output_tokens"]),
@@ -113,8 +115,8 @@ def render_report(kind, key, rows):
         "",
         "## 按机器明细",
         "",
-        "| 机器 | 请求数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 | 更新时间 |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| 机器 | 请求数 | 会话数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 | 更新时间 |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
 
     for row in rows:
@@ -125,6 +127,7 @@ def render_report(kind, key, rows):
                 [
                     row.get("machine_id", "unknown"),
                     fmt_int(totals.get("requests", 0)),
+                    fmt_int(totals.get("session_count", 0)),
                     fmt_int(totals.get("real_total_tokens", 0)),
                     fmt_int(totals.get("fresh_input_tokens", 0)),
                     fmt_int(totals.get("output_tokens", 0)),
