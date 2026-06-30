@@ -70,8 +70,8 @@ def fmt_cost(value):
 
 def title_for(kind, key):
     if kind == "daily":
-        return f"Codex Usage Daily Report - {key}"
-    return f"Codex Usage Monthly Report - {key[:7]}"
+        return f"Codex 用量日报 - {key}"
+    return f"Codex 用量月报 - {key[:7]}"
 
 
 def report_path(kind, key):
@@ -89,13 +89,13 @@ def render_report(kind, key, rows):
     lines = [
         f"# {title_for(kind, key)}",
         "",
-        f"- Period: `{period['start']}` to `{period['end']}`",
-        f"- Machines: `{len(rows)}`",
-        f"- Source updated: `{source_updated_at}`",
+        f"- 统计周期：`{period['start']}` 到 `{period['end']}`",
+        f"- 机器数量：`{len(rows)}`",
+        f"- 数据更新时间：`{source_updated_at}`",
         "",
-        "## Summary",
+        "## 汇总",
         "",
-        "| Requests | Real Tokens | Fresh Input | Output | Cache Read | Cache Hit | Cost |",
+        "| 请求数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 |",
         "|---:|---:|---:|---:|---:|---:|---:|",
         "| "
         + " | ".join(
@@ -111,9 +111,9 @@ def render_report(kind, key, rows):
         )
         + " |",
         "",
-        "## Machines",
+        "## 按机器明细",
         "",
-        "| Machine | Requests | Real Tokens | Fresh Input | Output | Cache Read | Cache Hit | Cost | Updated |",
+        "| 机器 | 请求数 | 真实 Token | 新增输入 | 输出 | 缓存读取 | 命中率 | 估算成本 | 更新时间 |",
         "|---|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
 
@@ -160,19 +160,19 @@ def generate():
     source_updated_at = max((value for value in source_updates if value), default="")
 
     index_lines = [
-        "# Codex Usage Reports",
+        "# Codex 用量报告",
         "",
-        f"Latest source update: `{source_updated_at}`",
+        f"最新数据更新时间：`{source_updated_at}`",
         "",
     ]
     if "daily" in latest:
         key = latest["daily"]
-        index_lines.append(f"- Latest daily: [reports/daily/{key}.md](daily/{key}.md)")
+        index_lines.append(f"- 最新日报：[reports/daily/{key}.md](daily/{key}.md)")
     if "monthly" in latest:
         key = latest["monthly"][:7]
-        index_lines.append(f"- Latest monthly: [reports/monthly/{key}.md](monthly/{key}.md)")
+        index_lines.append(f"- 最新月报：[reports/monthly/{key}.md](monthly/{key}.md)")
     if len(index_lines) == 4:
-        index_lines.append("No usage JSON files found.")
+        index_lines.append("未找到用量 JSON 文件。")
     index_lines.append("")
     write(REPORTS_DIR / "index.md", "\n".join(index_lines))
 
@@ -180,6 +180,10 @@ def generate():
     if latest_daily:
         latest_text = (REPORTS_DIR / "daily" / f"{latest_daily}.md").read_text(encoding="utf-8")
         write(REPORTS_DIR / "latest.md", latest_text)
+    latest_monthly = latest.get("monthly")
+    if latest_monthly:
+        latest_monthly_text = (REPORTS_DIR / "monthly" / f"{latest_monthly[:7]}.md").read_text(encoding="utf-8")
+        write(REPORTS_DIR / "latest-monthly.md", latest_monthly_text)
     return latest
 
 

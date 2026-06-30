@@ -1,6 +1,6 @@
-# Codex Usage Reports
+# Codex 用量报告
 
-Latest source update: `2026-06-30T16:57:26+08:00`
+最新数据更新时间：`2026-06-30T16:57:26+08:00`
 
-- Latest daily: [reports/daily/2026-06-30.md](daily/2026-06-30.md)
-- Latest monthly: [reports/monthly/2026-06.md](monthly/2026-06.md)
+- 最新日报：[reports/daily/2026-06-30.md](daily/2026-06-30.md)
+- 最新月报：[reports/monthly/2026-06.md](monthly/2026-06.md)
