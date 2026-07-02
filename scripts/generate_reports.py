@@ -134,30 +134,41 @@ def render_report(key, rows):
         [
             "",
             "## 按周明细",
-            "",
-            "| 机器/账号 | 周 | 周期 | 额度快照数 | 5小时最高使用 | 5小时最后使用 | 7天最高使用 | 7天最后使用 | 是否触顶 | 最新额度快照 |",
-            "|---|---|---|---:|---:|---:|---:|---:|---|---|",
         ]
     )
-    for machine, week in sorted(all_weeks(rows), key=lambda item: (item[0], item[1].get("start", ""))):
-        lines.append(
-            "| "
-            + " | ".join(
-                [
-                    machine,
-                    week.get("week", ""),
-                    f"{week.get('start', '')} 到 {week.get('end', '')}",
-                    fmt_int(week.get("snapshot_count") or 0),
-                    fmt_percent(week.get("five_hour_max_percent")),
-                    fmt_percent(week.get("five_hour_latest_percent")),
-                    fmt_percent(week.get("seven_day_max_percent")),
-                    fmt_percent(week.get("seven_day_latest_percent")),
-                    "是" if week.get("near_limit") else "否",
-                    week.get("latest_seen_at") or "",
-                ]
-            )
-            + " |"
+    for row in rows:
+        machine = row.get("machine_id", "unknown")
+        weeks = sorted((row.get("quota") or {}).get("weeks", []), key=lambda item: item.get("start", ""))
+        lines.extend(
+            [
+                "",
+                f"### {machine}",
+                "",
+                "| 周 | 周期 | 额度快照数 | 5小时最高使用 | 5小时最后使用 | 7天最高使用 | 7天最后使用 | 是否触顶 | 最新额度快照 |",
+                "|---|---|---:|---:|---:|---:|---:|---|---|",
+            ]
         )
+        if not weeks:
+            lines.append("| 无 | 无 | 0 | 0% | 0% | 0% | 0% | 否 |  |")
+            continue
+        for week in weeks:
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        week.get("week", ""),
+                        f"{week.get('start', '')} 到 {week.get('end', '')}",
+                        fmt_int(week.get("snapshot_count") or 0),
+                        fmt_percent(week.get("five_hour_max_percent")),
+                        fmt_percent(week.get("five_hour_latest_percent")),
+                        fmt_percent(week.get("seven_day_max_percent")),
+                        fmt_percent(week.get("seven_day_latest_percent")),
+                        "是" if week.get("near_limit") else "否",
+                        week.get("latest_seen_at") or "",
+                    ]
+                )
+                + " |"
+            )
 
     lines.append("")
     return "\n".join(lines)
