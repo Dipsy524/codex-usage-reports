@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "source": "codex-jsonl",
+  "app_type": "codex",
+  "machine_id": "DESKTOP-J9L7EAU",
+  "generated_at": "2026-07-02T14:38:27+08:00",
+  "period": {
+    "type": "monthly",
+    "start": "2026-06-01",
+    "end": "2026-07-01"
+  },
+  "quota": {
+    "snapshot_count": 259,
+    "five_hour_max_percent": 78.0,
+    "five_hour_latest_percent": 1.0,
+    "seven_day_max_percent": 60.0,
+    "seven_day_latest_percent": 0.0,
+    "near_limit_week_count": 0,
+    "threshold_percent": 95,
+    "latest_seen_at": "2026-06-29T17:16:25+08:00",
+    "weeks": [
+      {
+        "week": "2026-W24",
+        "start": "2026-06-08",
+        "end": "2026-06-15",
+        "snapshot_count": 24,
+        "five_hour_max_percent": 17.0,
+        "five_hour_latest_percent": 17.0,
+        "seven_day_max_percent": 3.0,
+        "seven_day_latest_percent": 3.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-06-12T18:16:17+08:00"
+      },
+      {
+        "week": "2026-W26",
+        "start": "2026-06-22",
+        "end": "2026-06-29",
+        "snapshot_count": 233,
+        "five_hour_max_percent": 78.0,
+        "five_hour_latest_percent": 78.0,
+        "seven_day_max_percent": 60.0,
+        "seven_day_latest_percent": 60.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-06-26T18:26:45+08:00"
+      },
+      {
+        "week": "2026-W27",
+        "start": "2026-06-29",
+        "end": "2026-07-01",
+        "snapshot_count": 2,
+        "five_hour_max_percent": 1.0,
+        "five_hour_latest_percent": 1.0,
+        "seven_day_max_percent": 0.0,
+        "seven_day_latest_percent": 0.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-06-29T17:16:25+08:00"
+      }
+    ]
+  }
+}
