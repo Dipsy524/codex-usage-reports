@@ -1,35 +1,36 @@
 {
-  "schema_version": 1,
-  "source": "cc-switch.db + codex-jsonl",
+  "schema_version": 2,
+  "source": "codex-jsonl",
   "app_type": "codex",
   "machine_id": "DIPSY-OFFICE",
-  "generated_at": "2026-07-02T13:12:35+08:00",
+  "generated_at": "2026-07-02T13:42:17+08:00",
   "period": {
     "type": "monthly",
     "start": "2026-07-01",
     "end": "2026-08-01"
   },
-  "totals": {
-    "requests": 1223,
-    "session_count": 6,
-    "input_tokens_including_cache": 157015804,
-    "fresh_input_tokens": 7802620,
-    "output_tokens": 594389,
-    "cache_read_tokens": 149213184,
-    "cache_creation_tokens": 0,
-    "real_total_tokens": 157610193,
-    "cache_hit_rate": 0.950307,
-    "cost_usd": 131.451362
-  },
   "quota": {
-    "snapshot_count": 1262,
+    "snapshot_count": 1361,
     "five_hour_max_percent": 49.0,
-    "five_hour_latest_percent": 3.0,
+    "five_hour_latest_percent": 6.0,
     "seven_day_max_percent": 25.0,
     "seven_day_latest_percent": 25.0,
-    "seven_day_window_count": 1,
-    "seven_day_near_limit_windows": 0,
-    "seven_day_threshold_percent": 95,
-    "latest_seen_at": "2026-07-02T13:12:13+08:00"
+    "near_limit_week_count": 0,
+    "threshold_percent": 95,
+    "latest_seen_at": "2026-07-02T13:42:09+08:00",
+    "weeks": [
+      {
+        "week": "2026-W27",
+        "start": "2026-07-01",
+        "end": "2026-07-06",
+        "snapshot_count": 1361,
+        "five_hour_max_percent": 49.0,
+        "five_hour_latest_percent": 6.0,
+        "seven_day_max_percent": 25.0,
+        "seven_day_latest_percent": 25.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-07-02T13:42:09+08:00"
+      }
+    ]
   }
 }
