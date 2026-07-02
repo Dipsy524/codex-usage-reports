@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "source": "cc-switch.db + codex-jsonl",
+  "app_type": "codex",
+  "machine_id": "DIPSY-OFFICE",
+  "generated_at": "2026-07-02T13:11:20+08:00",
+  "period": {
+    "type": "monthly",
+    "start": "2026-07-01",
+    "end": "2026-08-01"
+  },
+  "totals": {
+    "requests": 1213,
+    "session_count": 6,
+    "input_tokens_including_cache": 154982195,
+    "fresh_input_tokens": 7791155,
+    "output_tokens": 590848,
+    "cache_read_tokens": 147191040,
+    "cache_creation_tokens": 0,
+    "real_total_tokens": 155573043,
+    "cache_hit_rate": 0.949729,
+    "cost_usd": 130.276735
+  },
+  "quota": {
+    "snapshot_count": 1257,
+    "five_hour_max_percent": 49.0,
+    "five_hour_latest_percent": 15.0,
+    "seven_day_max_percent": 25.0,
+    "seven_day_latest_percent": 21.0,
+    "seven_day_window_count": 1,
+    "seven_day_near_limit_windows": 0,
+    "seven_day_threshold_percent": 95,
+    "latest_seen_at": "2026-07-01T18:24:20+08:00"
+  }
+}
