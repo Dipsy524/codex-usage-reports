@@ -1,4 +1,4 @@
-name: Generate usage reports
+name: Generate quota reports
 
 on:
   workflow_dispatch:
@@ -25,14 +25,7 @@ jobs:
         run: |
           if [ -f reports/latest.md ]; then
             cat reports/latest.md >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "---" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f reports/latest-monthly.md ]; then
-            cat reports/latest-monthly.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ ! -f reports/latest.md ] && [ ! -f reports/latest-monthly.md ]; then
+          else
             echo "未生成用量报告。" >> "$GITHUB_STEP_SUMMARY"
           fi
 
