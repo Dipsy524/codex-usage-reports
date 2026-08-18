@@ -1,0 +1,72 @@
+{
+  "schema_version": 3,
+  "source": "codex-jsonl",
+  "app_type": "codex",
+  "machine_id": "xiesonglin",
+  "generated_at": "2026-08-18T14:41:27+08:00",
+  "period": {
+    "type": "monthly",
+    "start": "2026-08-01",
+    "end": "2026-09-01"
+  },
+  "quota": {
+    "snapshot_count": 165782,
+    "five_hour_max_percent": null,
+    "five_hour_latest_percent": null,
+    "seven_day_max_percent": 92.0,
+    "seven_day_latest_percent": 32.0,
+    "near_limit_week_count": 1,
+    "threshold_percent": 90,
+    "latest_seen_at": "2026-08-18T14:41:19+08:00",
+    "weeks": [
+      {
+        "week": "2026-W31",
+        "start": "2026-08-01",
+        "end": "2026-08-03",
+        "snapshot_count": 434,
+        "five_hour_max_percent": null,
+        "five_hour_latest_percent": null,
+        "seven_day_max_percent": 4.0,
+        "seven_day_latest_percent": 4.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-08-02T17:59:21+08:00"
+      },
+      {
+        "week": "2026-W32",
+        "start": "2026-08-03",
+        "end": "2026-08-10",
+        "snapshot_count": 7061,
+        "five_hour_max_percent": null,
+        "five_hour_latest_percent": null,
+        "seven_day_max_percent": 57.0,
+        "seven_day_latest_percent": 0.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-08-07T21:11:11+08:00"
+      },
+      {
+        "week": "2026-W33",
+        "start": "2026-08-10",
+        "end": "2026-08-17",
+        "snapshot_count": 155590,
+        "five_hour_max_percent": null,
+        "five_hour_latest_percent": null,
+        "seven_day_max_percent": 92.0,
+        "seven_day_latest_percent": 92.0,
+        "near_limit": true,
+        "latest_seen_at": "2026-08-16T06:27:14+08:00"
+      },
+      {
+        "week": "2026-W34",
+        "start": "2026-08-17",
+        "end": "2026-08-24",
+        "snapshot_count": 2697,
+        "five_hour_max_percent": null,
+        "five_hour_latest_percent": null,
+        "seven_day_max_percent": 32.0,
+        "seven_day_latest_percent": 32.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-08-18T14:41:19+08:00"
+      }
+    ]
+  }
+}
