@@ -1,9 +1,9 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "source": "codex-jsonl",
   "app_type": "codex",
   "machine_id": "xiesonglin",
-  "generated_at": "2026-08-18T14:08:21+08:00",
+  "generated_at": "2026-08-18T14:40:50+08:00",
   "period": {
     "type": "monthly",
     "start": "2026-07-01",
@@ -13,10 +13,10 @@
     "snapshot_count": 51588,
     "five_hour_max_percent": 100.0,
     "five_hour_latest_percent": 10.0,
-    "seven_day_max_percent": 57.0,
-    "seven_day_latest_percent": 50.0,
-    "near_limit_week_count": 0,
-    "threshold_percent": 95,
+    "seven_day_max_percent": 96.0,
+    "seven_day_latest_percent": 53.0,
+    "near_limit_week_count": 1,
+    "threshold_percent": 90,
     "latest_seen_at": "2026-07-31T19:23:27+08:00",
     "weeks": [
       {
@@ -51,7 +51,7 @@
         "five_hour_max_percent": 28.0,
         "five_hour_latest_percent": 10.0,
         "seven_day_max_percent": 54.0,
-        "seven_day_latest_percent": 50.0,
+        "seven_day_latest_percent": 0.0,
         "near_limit": false,
         "latest_seen_at": "2026-07-18T17:28:30+08:00"
       },
@@ -60,11 +60,11 @@
         "start": "2026-07-20",
         "end": "2026-07-27",
         "snapshot_count": 17259,
-        "five_hour_max_percent": 0.0,
+        "five_hour_max_percent": null,
         "five_hour_latest_percent": null,
-        "seven_day_max_percent": 0.0,
-        "seven_day_latest_percent": null,
-        "near_limit": false,
+        "seven_day_max_percent": 96.0,
+        "seven_day_latest_percent": 96.0,
+        "near_limit": true,
         "latest_seen_at": "2026-07-25T21:42:49+08:00"
       },
       {
@@ -72,10 +72,10 @@
         "start": "2026-07-27",
         "end": "2026-08-01",
         "snapshot_count": 9836,
-        "five_hour_max_percent": 0.0,
+        "five_hour_max_percent": null,
         "five_hour_latest_percent": null,
-        "seven_day_max_percent": 0.0,
-        "seven_day_latest_percent": null,
+        "seven_day_max_percent": 53.0,
+        "seven_day_latest_percent": 53.0,
         "near_limit": false,
         "latest_seen_at": "2026-07-31T19:23:27+08:00"
       }
