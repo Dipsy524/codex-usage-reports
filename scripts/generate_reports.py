@@ -37,7 +37,14 @@ def fmt_int(value):
 
 
 def fmt_percent(value):
-    return f"{float(value or 0):.0f}%"
+    if value is None:
+        return "—"
+    return f"{float(value):.0f}%"
+
+
+def max_percent(values):
+    present = [value for value in values if value is not None]
+    return max(present, default=None)
 
 
 def latest_seen(rows):
@@ -62,8 +69,8 @@ def summary(rows):
     return {
         "machine_count": len(rows),
         "snapshot_count": sum(q.get("snapshot_count") or 0 for q in quotas),
-        "five_hour_max_percent": max((q.get("five_hour_max_percent") or 0 for q in quotas), default=0),
-        "seven_day_max_percent": max((q.get("seven_day_max_percent") or 0 for q in quotas), default=0),
+        "five_hour_max_percent": max_percent(q.get("five_hour_max_percent") for q in quotas),
+        "seven_day_max_percent": max_percent(q.get("seven_day_max_percent") for q in quotas),
         "near_limit_week_count": sum(1 for _, week in weeks if week.get("near_limit")),
         "latest_seen_at": latest_seen(rows),
     }
@@ -149,7 +156,7 @@ def render_report(key, rows):
             ]
         )
         if not weeks:
-            lines.append("| 无 | 无 | 0 | 0% | 0% | 0% | 0% | 否 |  |")
+            lines.append("| 无 | 无 | 0 | — | — | — | — | 否 |  |")
             continue
         for week in weeks:
             lines.append(
