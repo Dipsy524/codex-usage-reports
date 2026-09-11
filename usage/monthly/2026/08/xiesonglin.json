@@ -1,9 +1,9 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "source": "codex-jsonl",
   "app_type": "codex",
   "machine_id": "xiesonglin",
-  "generated_at": "2026-09-11T15:57:06+08:00",
+  "generated_at": "2026-09-11 16:22:06",
   "period": {
     "type": "monthly",
     "start": "2026-08-01",
@@ -11,85 +11,55 @@
   },
   "quota": {
     "snapshot_count": 45610,
-    "five_hour_max_percent": 0.0,
-    "five_hour_latest_percent": 0.0,
     "seven_day_max_percent": 92.0,
-    "seven_day_latest_percent": 0.0,
-    "near_limit_week_count": 1,
-    "threshold_percent": 90,
-    "latest_seen_at": "2026-08-31T21:06:50+08:00",
     "weeks": [
       {
         "week": "2026-W31",
         "start": "2026-08-01",
         "end": "2026-08-03",
         "snapshot_count": 434,
-        "five_hour_max_percent": null,
-        "five_hour_latest_percent": null,
         "seven_day_max_percent": 4.0,
-        "seven_day_latest_percent": 4.0,
-        "near_limit": false,
-        "latest_seen_at": "2026-08-02T17:59:21+08:00"
+        "latest_seen_at": "2026-08-02 17:59:21"
       },
       {
         "week": "2026-W32",
         "start": "2026-08-03",
         "end": "2026-08-10",
         "snapshot_count": 6059,
-        "five_hour_max_percent": null,
-        "five_hour_latest_percent": null,
         "seven_day_max_percent": 57.0,
-        "seven_day_latest_percent": 0.0,
-        "near_limit": false,
-        "latest_seen_at": "2026-08-07T21:11:11+08:00"
+        "latest_seen_at": "2026-08-07 21:11:11"
       },
       {
         "week": "2026-W33",
         "start": "2026-08-10",
         "end": "2026-08-17",
         "snapshot_count": 17330,
-        "five_hour_max_percent": null,
-        "five_hour_latest_percent": null,
         "seven_day_max_percent": 92.0,
-        "seven_day_latest_percent": 92.0,
-        "near_limit": true,
-        "latest_seen_at": "2026-08-16T06:27:14+08:00"
+        "latest_seen_at": "2026-08-16 06:27:14"
       },
       {
         "week": "2026-W34",
         "start": "2026-08-17",
         "end": "2026-08-24",
         "snapshot_count": 11191,
-        "five_hour_max_percent": null,
-        "five_hour_latest_percent": null,
         "seven_day_max_percent": 77.0,
-        "seven_day_latest_percent": 39.0,
-        "near_limit": false,
-        "latest_seen_at": "2026-08-23T00:34:20+08:00"
+        "latest_seen_at": "2026-08-23 00:34:20"
       },
       {
         "week": "2026-W35",
         "start": "2026-08-24",
         "end": "2026-08-31",
         "snapshot_count": 9611,
-        "five_hour_max_percent": 0.0,
-        "five_hour_latest_percent": 0.0,
         "seven_day_max_percent": 27.0,
-        "seven_day_latest_percent": 26.0,
-        "near_limit": false,
-        "latest_seen_at": "2026-08-29T22:10:15+08:00"
+        "latest_seen_at": "2026-08-29 22:10:15"
       },
       {
         "week": "2026-W36",
         "start": "2026-08-31",
         "end": "2026-09-01",
         "snapshot_count": 985,
-        "five_hour_max_percent": 0.0,
-        "five_hour_latest_percent": 0.0,
         "seven_day_max_percent": 6.0,
-        "seven_day_latest_percent": 0.0,
-        "near_limit": false,
-        "latest_seen_at": "2026-08-31T21:06:50+08:00"
+        "latest_seen_at": "2026-08-31 21:06:50"
       }
     ]
   }
