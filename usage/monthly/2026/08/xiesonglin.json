@@ -3,21 +3,21 @@
   "source": "codex-jsonl",
   "app_type": "codex",
   "machine_id": "xiesonglin",
-  "generated_at": "2026-08-18T14:41:27+08:00",
+  "generated_at": "2026-09-11T15:57:06+08:00",
   "period": {
     "type": "monthly",
     "start": "2026-08-01",
     "end": "2026-09-01"
   },
   "quota": {
-    "snapshot_count": 165782,
-    "five_hour_max_percent": null,
-    "five_hour_latest_percent": null,
+    "snapshot_count": 45610,
+    "five_hour_max_percent": 0.0,
+    "five_hour_latest_percent": 0.0,
     "seven_day_max_percent": 92.0,
-    "seven_day_latest_percent": 32.0,
+    "seven_day_latest_percent": 0.0,
     "near_limit_week_count": 1,
     "threshold_percent": 90,
-    "latest_seen_at": "2026-08-18T14:41:19+08:00",
+    "latest_seen_at": "2026-08-31T21:06:50+08:00",
     "weeks": [
       {
         "week": "2026-W31",
@@ -35,7 +35,7 @@
         "week": "2026-W32",
         "start": "2026-08-03",
         "end": "2026-08-10",
-        "snapshot_count": 7061,
+        "snapshot_count": 6059,
         "five_hour_max_percent": null,
         "five_hour_latest_percent": null,
         "seven_day_max_percent": 57.0,
@@ -47,7 +47,7 @@
         "week": "2026-W33",
         "start": "2026-08-10",
         "end": "2026-08-17",
-        "snapshot_count": 155590,
+        "snapshot_count": 17330,
         "five_hour_max_percent": null,
         "five_hour_latest_percent": null,
         "seven_day_max_percent": 92.0,
@@ -59,13 +59,37 @@
         "week": "2026-W34",
         "start": "2026-08-17",
         "end": "2026-08-24",
-        "snapshot_count": 2697,
+        "snapshot_count": 11191,
         "five_hour_max_percent": null,
         "five_hour_latest_percent": null,
-        "seven_day_max_percent": 32.0,
-        "seven_day_latest_percent": 32.0,
+        "seven_day_max_percent": 77.0,
+        "seven_day_latest_percent": 39.0,
         "near_limit": false,
-        "latest_seen_at": "2026-08-18T14:41:19+08:00"
+        "latest_seen_at": "2026-08-23T00:34:20+08:00"
+      },
+      {
+        "week": "2026-W35",
+        "start": "2026-08-24",
+        "end": "2026-08-31",
+        "snapshot_count": 9611,
+        "five_hour_max_percent": 0.0,
+        "five_hour_latest_percent": 0.0,
+        "seven_day_max_percent": 27.0,
+        "seven_day_latest_percent": 26.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-08-29T22:10:15+08:00"
+      },
+      {
+        "week": "2026-W36",
+        "start": "2026-08-31",
+        "end": "2026-09-01",
+        "snapshot_count": 985,
+        "five_hour_max_percent": 0.0,
+        "five_hour_latest_percent": 0.0,
+        "seven_day_max_percent": 6.0,
+        "seven_day_latest_percent": 0.0,
+        "near_limit": false,
+        "latest_seen_at": "2026-08-31T21:06:50+08:00"
       }
     ]
   }
