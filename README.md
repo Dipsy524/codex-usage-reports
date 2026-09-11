@@ -1,6 +1,6 @@
 # Codex Usage Reports
 
-This private repository stores per-machine Codex usage JSON uploaded by the Codex Usage Uploader plugin.
+This private repository stores per-machine Codex seven-day quota peaks uploaded by the Codex Usage Uploader plugin and grouped by natural week.
 
 Reports are generated into:
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import datetime as dt
 import json
 import shutil
 from pathlib import Path
@@ -47,32 +48,37 @@ def max_percent(values):
     return max(present, default=None)
 
 
-def latest_seen(rows):
-    values = []
-    for row in rows:
-        quota = row.get("quota") or {}
-        values.append(quota.get("latest_seen_at") or "")
-        values.append(row.get("generated_at") or "")
+def fmt_timestamp(value):
+    if not value:
+        return ""
+    try:
+        parsed = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except (AttributeError, ValueError):
+        return value
+    return parsed.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def latest_generated_at(rows):
+    values = [fmt_timestamp(row.get("generated_at")) for row in rows]
     return max((value for value in values if value), default="")
 
 
-def all_weeks(rows):
-    for row in rows:
-        machine = row.get("machine_id", "unknown")
-        for week in (row.get("quota") or {}).get("weeks", []):
-            yield machine, week
+def fmt_week(value):
+    marker = "-W"
+    if isinstance(value, str) and marker in value:
+        number = value.rsplit(marker, 1)[-1]
+        if number.isdigit():
+            return f"第{int(number)}周"
+    return value or ""
 
 
 def summary(rows):
-    weeks = list(all_weeks(rows))
     quotas = [row.get("quota") or {} for row in rows]
     return {
         "machine_count": len(rows),
         "snapshot_count": sum(q.get("snapshot_count") or 0 for q in quotas),
-        "five_hour_max_percent": max_percent(q.get("five_hour_max_percent") for q in quotas),
         "seven_day_max_percent": max_percent(q.get("seven_day_max_percent") for q in quotas),
-        "near_limit_week_count": sum(1 for _, week in weeks if week.get("near_limit")),
-        "latest_seen_at": latest_seen(rows),
+        "generated_at": latest_generated_at(rows),
     }
 
 
@@ -94,29 +100,26 @@ def render_report(key, rows):
         "",
         f"- 统计周期：`{period['start']}` 到 `{period['end']}`",
         f"- 机器/账号标识数量：`{len(rows)}`",
-        f"- 数据更新时间：`{total['latest_seen_at']}`",
+        f"- 数据更新时间：`{total['generated_at']}`",
         "",
         "## 汇总",
         "",
-        "| 标识数 | 额度快照数 | 5小时最高使用 | 7天最高使用 | 触顶周数 | 最新额度快照 |",
-        "|---:|---:|---:|---:|---:|---|",
+        "| 标识数 | 额度快照数 | 7天最高使用 |",
+        "|---:|---:|---:|",
         "| "
         + " | ".join(
             [
                 fmt_int(total["machine_count"]),
                 fmt_int(total["snapshot_count"]),
-                fmt_percent(total["five_hour_max_percent"]),
                 fmt_percent(total["seven_day_max_percent"]),
-                fmt_int(total["near_limit_week_count"]),
-                total["latest_seen_at"],
             ]
         )
         + " |",
         "",
         "## 按机器/账号",
         "",
-        "| 机器/账号 | 额度快照数 | 5小时最高使用 | 7天最高使用 | 触顶周数 | 最新额度快照 | 上传时间 |",
-        "|---|---:|---:|---:|---:|---|---|",
+        "| 机器/账号 | 额度快照数 | 7天最高使用 | 上传时间 |",
+        "|---|---:|---:|---|",
     ]
 
     for row in rows:
@@ -127,11 +130,8 @@ def render_report(key, rows):
                 [
                     row.get("machine_id", "unknown"),
                     fmt_int(quota.get("snapshot_count") or 0),
-                    fmt_percent(quota.get("five_hour_max_percent")),
                     fmt_percent(quota.get("seven_day_max_percent")),
-                    fmt_int(quota.get("near_limit_week_count") or 0),
-                    quota.get("latest_seen_at") or "",
-                    row.get("generated_at", ""),
+                    fmt_timestamp(row.get("generated_at")),
                 ]
             )
             + " |"
@@ -151,27 +151,23 @@ def render_report(key, rows):
                 "",
                 f"### {machine}",
                 "",
-                "| 周 | 周期 | 额度快照数 | 5小时最高使用 | 5小时最后使用 | 7天最高使用 | 7天最后使用 | 是否触顶 | 最新额度快照 |",
-                "|---|---|---:|---:|---:|---:|---:|---|---|",
+                "| 周 | 周期 | 额度快照数 | 7天最高使用 | 最新额度快照 |",
+                "|---|---|---:|---:|---|",
             ]
         )
         if not weeks:
-            lines.append("| 无 | 无 | 0 | — | — | — | — | 否 |  |")
+            lines.append("| 无 | 无 | 0 | — |  |")
             continue
         for week in weeks:
             lines.append(
                 "| "
                 + " | ".join(
                     [
-                        week.get("week", ""),
+                        fmt_week(week.get("week")),
                         f"{week.get('start', '')} 到 {week.get('end', '')}",
                         fmt_int(week.get("snapshot_count") or 0),
-                        fmt_percent(week.get("five_hour_max_percent")),
-                        fmt_percent(week.get("five_hour_latest_percent")),
                         fmt_percent(week.get("seven_day_max_percent")),
-                        fmt_percent(week.get("seven_day_latest_percent")),
-                        "是" if week.get("near_limit") else "否",
-                        week.get("latest_seen_at") or "",
+                        fmt_timestamp(week.get("latest_seen_at")),
                     ]
                 )
                 + " |"
@@ -202,7 +198,7 @@ def generate():
     ]
     if latest:
         month = latest[:7]
-        index_lines.append(f"最新数据更新时间：`{summary(grouped[latest])['latest_seen_at']}`")
+        index_lines.append(f"最新数据更新时间：`{summary(grouped[latest])['generated_at']}`")
         index_lines.append("")
         index_lines.append(f"- 最新月报：[reports/monthly/{month}.md](monthly/{month}.md)")
     else:
