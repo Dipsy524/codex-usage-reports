@@ -1,0 +1,58 @@
+{
+  "schema_version": 4,
+  "source": "codex-jsonl",
+  "app_type": "codex",
+  "machine_id": "yifan",
+  "generated_at": "2026-09-11 17:20:43",
+  "period": {
+    "type": "monthly",
+    "start": "2026-08-01",
+    "end": "2026-09-01"
+  },
+  "quota": {
+    "snapshot_count": 1218,
+    "seven_day_max_percent": 82.0,
+    "weeks": [
+      {
+        "week": "2026-W32",
+        "start": "2026-08-03",
+        "end": "2026-08-10",
+        "snapshot_count": 271,
+        "seven_day_max_percent": 82.0,
+        "latest_seen_at": "2026-08-07 19:42:36"
+      },
+      {
+        "week": "2026-W33",
+        "start": "2026-08-10",
+        "end": "2026-08-17",
+        "snapshot_count": 260,
+        "seven_day_max_percent": 27.0,
+        "latest_seen_at": "2026-08-14 17:19:43"
+      },
+      {
+        "week": "2026-W34",
+        "start": "2026-08-17",
+        "end": "2026-08-24",
+        "snapshot_count": 229,
+        "seven_day_max_percent": 57.0,
+        "latest_seen_at": "2026-08-21 19:35:48"
+      },
+      {
+        "week": "2026-W35",
+        "start": "2026-08-24",
+        "end": "2026-08-31",
+        "snapshot_count": 276,
+        "seven_day_max_percent": 13.0,
+        "latest_seen_at": "2026-08-28 19:25:09"
+      },
+      {
+        "week": "2026-W36",
+        "start": "2026-08-31",
+        "end": "2026-09-01",
+        "snapshot_count": 182,
+        "seven_day_max_percent": 6.0,
+        "latest_seen_at": "2026-08-31 20:15:09"
+      }
+    ]
+  }
+}
